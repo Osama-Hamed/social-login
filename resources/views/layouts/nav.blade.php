@@ -7,15 +7,28 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                </li>
+                @auth
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('logout.submit') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout.submit') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                @endauth
+                @guest
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>
