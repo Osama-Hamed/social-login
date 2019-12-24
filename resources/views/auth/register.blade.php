@@ -41,13 +41,7 @@
 				</div>				
 			</form>
 
-			<p class="text-center font-weight-bold">or signup with</p>
-
-			<div class="text-center">
-				<button class="btn btn-light w-25 mr-3"><i class="fa fa-google"></i> Google</button>
-				<button class="btn btn-light w-25 mr-3"><i class="fa fa-facebook-official"></i> Facebook</button>
-				<button class="btn btn-light w-25"><i class="fa fa-twitter"></i> Twitter</button>
-			</div>
+			@include('auth.partials.social-auth', ['action' => 'signup'])
 		</div>
 	</div>
 @endsection
